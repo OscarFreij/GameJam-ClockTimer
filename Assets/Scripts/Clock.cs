@@ -146,4 +146,32 @@ public class Clock : MonoBehaviour
             ClockIsRunning = false;
         }
     }
+
+    public void StopReset()
+    {
+        if(ControlPanel.transform.Find("Stop_Reset").transform.Find("Text").GetComponent<Text>().text == "Stop")
+        {
+            ControlPanel.transform.Find("Start_Pause").transform.Find("Text").GetComponent<Text>().text = "Start";
+            ControlPanel.transform.Find("Stop_Reset").transform.Find("Text").GetComponent<Text>().text = "Reset";
+            OldTotalTimeLeft = 0;
+            TotalTimeLeft = 0;
+            ClockIsRunning = false;
+        }
+        else if (ControlPanel.transform.Find("Stop_Reset").transform.Find("Text").GetComponent<Text>().text == "Reset")
+        {
+            Hours = 0;
+            Minutes = 0;
+            Seconds = 0;
+            Milliseconds = 0;
+
+            OldTotalTimeLeft = 0;
+            TotalTimeLeft = 0;
+
+            ControlPanel.transform.Find("TimePanel").transform.Find("InputFieldHH").transform.Find("Text").GetComponent<Text>().text = Hours.ToString();
+            ControlPanel.transform.Find("TimePanel").transform.Find("InputFieldMM").transform.Find("Text").GetComponent<Text>().text = Minutes.ToString();
+            ControlPanel.transform.Find("TimePanel").transform.Find("InputFieldSS").transform.Find("Text").GetComponent<Text>().text = Seconds.ToString();
+            ControlPanel.transform.Find("TimePanel").transform.Find("InputFieldMS").transform.Find("Text").GetComponent<Text>().text = Milliseconds.ToString();
+
+        }
+    }
 }
